@@ -4,7 +4,7 @@
 
 ## 0.69.0 (2020-04-10)
 
-The "I can't stand Hugo 0.20.somethng anymore" release.
+The "I can't stand Hugo 0.20.something anymore" release.
 
 ### Enhancements
 

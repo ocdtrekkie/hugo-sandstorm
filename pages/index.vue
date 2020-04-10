@@ -12,7 +12,7 @@
       </p>
     </template>
     <template v-else>
-      <p>Your public site is available at <a :href="url" target="_blank">{{ url }}</a>.</p>
+      <p>Your public site is available at <a :href="url" rel="noopener" target="_blank">{{ url }}</a>.</p>
       <div v-if="!isDemo">
         <p>To set up your domain to point at your public site, add the following DNS records to your domain. Replace <code>blog.example.com</code> with your site's hostname.</p>
         <table>
@@ -57,6 +57,12 @@
     <render-template
       rpcId="gitPush"
       :template="'git remote add origin ' + this.gitUrl + '\ngit push -fu origin master'"/>
+    <h2>Admin Interface</h2>
+    <p>
+      ...had to be removed temporarily because Caddy 1 isn't recommended anymore and
+      <a target="_blank" rel="noopener" href="https://caddy.community/t/new-old-plugin-http-filebrowser/5103">Caddy 2 needs some work to get working well with Hugo</a>.
+      <a target="_blank" rel="noopener" href="https://github.com/johnbintz/hugo-sandstorm">Want to help?</a>
+    </p>
   </div>
 </template>
 
