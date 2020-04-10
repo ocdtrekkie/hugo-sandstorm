@@ -9,7 +9,7 @@ const pkgdef :Spk.PackageDefinition = (
   # The package definition. Note that the spk tool looks specifically for the
   # "pkgdef" constant.
 
-  id = "ksyud8q9h7rx9u001jn38216xe75a200avh7tg267wss6pq9zfkh",
+  id = "4vnyd4c929g8dpns2zer8afgrsv1j7aknq4snyw3tu9p4vm4mwc0",
   # Your app ID is actually its public key. The private key was placed in
   # your keyring. All updates must be signed with the same key.
 
@@ -57,7 +57,7 @@ const pkgdef :Spk.PackageDefinition = (
       website = "https://gohugo.io",
       # This should be the app's main website url.
 
-      codeUrl = "https://github.com/ndarilek/hugo-sandstorm",
+      codeUrl = "https://github.com/johnbintz/hugo-sandstorm",
       # URL of the app's source code repository, e.g. a GitHub URL.
       # Required if you specify a license requiring redistributing code, but optional otherwise.
 
@@ -73,7 +73,7 @@ const pkgdef :Spk.PackageDefinition = (
       author = (
         # Fields relating to the author of this app.
 
-        contactEmail = "nolan@thewordnerd.info",
+        contactEmail = "sandstorm@leapingsheepfarm.com",
         # Email address to contact for any issues with this app. This includes end-user support
         # requests as well as app store administrator requests, so it is very important that this be a
         # valid address with someone paying attention to it.
@@ -157,7 +157,8 @@ const pkgdef :Spk.PackageDefinition = (
 
   alwaysInclude = [
     "opt/app/node_modules/json-loader",
-    "usr/lib/python2.7/dist-packages/pygments"
+    "usr/lib/node_modules/npm/node_modules/node-gyp",
+    "usr/local/lib/python2.7/dist-packages/pygments",
   ],
   # Fill this list with more names of files or directories that should be
   # included in your package, even if not listed in sandstorm-files.list.
