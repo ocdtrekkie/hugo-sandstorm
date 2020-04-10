@@ -12,8 +12,8 @@ apt-get update
 apt-get install -y git strace
 
 # First, get capnproto from master and install it to
-# /usr/local/bin. This requires a C++ compiler. We opt for gcc-6
-# because that's what capnproto now requires.
+# /usr/local/bin. This requires a C++ compiler. We opt for clang
+# because that's what Sandstorm is typically compiled with.
 if [ ! -e /usr/local/bin/capnp ] ; then
     sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q clang autoconf pkg-config libtool
     cd /tmp

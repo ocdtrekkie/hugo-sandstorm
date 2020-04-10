@@ -1,10 +1,10 @@
 import Nuxt from "nuxt"
 import logger from "morgan"
 import fs from 'fs'
-const exec = require("child_process").exec
-const execFile = require("child_process").execFile
 import Express from "express"
 import gitBackend from "git-http-backend"
+// TODO: once Caddy 2 or something similar is in place, reinstate the
+// admin proxy.
 //import httpProxy from "http-proxy"
 const spawn = require("child_process").spawn
 
@@ -20,6 +20,9 @@ app.set("port", port)
 app.get("/publicId", (req, res) => {
   const sessionId = req.headers["x-sandstorm-session-id"]
   let allData = ""
+  // TODO: figure out why Cap'n Proto keeps crashing when
+  // getPublicId exits so we can get rid of this weird
+  // memoization hack I had to do!
   const file = `/var/publicid-${sessionId}`
 
   const handleResult = () => {
@@ -94,7 +97,6 @@ app.use(nuxt.render)
 if (config.dev) {
   nuxt.build()
   .catch((error) => {
-    console.log('whoa')
     console.error(error) // eslint-disable-line no-console
     process.exit(1)
   })

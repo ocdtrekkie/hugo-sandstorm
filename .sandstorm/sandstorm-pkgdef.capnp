@@ -244,7 +244,6 @@ const myCommand :Spk.Manifest.Command = (
     (key = "SANDSTORM", value = "1"),
     (key = "HOME", value = "/var"),
     (key = "NODE_ENV", value = "production"),
-    (key = "NODE_DEBUG", value = "fs"),
     # Export SANDSTORM=1 into the environment, so that apps running within Sandstorm
     # can detect if $SANDSTORM="1" at runtime, switching UI and/or backend to use
     # the app's Sandstorm-specific integration code.

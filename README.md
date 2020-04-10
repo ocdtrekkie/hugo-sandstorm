@@ -1,7 +1,7 @@
 # Hugo Sandstorm package
 
 This is the [Sandstorm](https://sandstorm.io) package of [Hugo](https://gohugo.io/).
-The version of Hugo in this build is 0.68.3.
+The version of Hugo in this build is 0.69.0.
 
 ## Development
 
