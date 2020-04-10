@@ -1,9 +1,0 @@
-127.0.0.1:8001 {
-  root /var/git
-}
-errors stderr
-log stdout
-hugo /var/git {
-  allow_commands false
-  after_save "/opt/app/commit-on-save {path}"
-}

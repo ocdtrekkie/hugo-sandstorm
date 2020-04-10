@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-export HUGO_VERSION=0.68.3
+export HUGO_VERSION=0.69.0
 export NODE_VERSION=10
 
 apt-get update
@@ -19,24 +19,18 @@ if [ ! -e /usr/local/bin/capnp ] ; then
     cd /tmp
     if [ ! -e capnproto ]; then git clone https://github.com/capnproto/capnproto; fi
     cd capnproto
-    #git checkout master
     git checkout master
     cd c++
-    make clean || true
     autoreconf -i
     ./configure
     make -j2
     sudo make install
 fi
 
-rm /opt/app/sandstorm-integration/getPublicId || true
-rm -Rf /opt/app/sandstorm-integration/tmp || true
-
 # Second, compile the small C++ program within
 # /opt/app/sandstorm-integration.
 if [ ! -e /opt/app/sandstorm-integration/getPublicId ] ; then
     pushd /opt/app/sandstorm-integration
-    make clean || true
     make
 fi
 
