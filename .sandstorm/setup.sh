@@ -9,7 +9,7 @@ export HUGO_VERSION=0.69.0
 export NODE_VERSION=10
 
 apt-get update
-apt-get install -y git strace
+apt-get install -y git
 
 # First, get capnproto from master and install it to
 # /usr/local/bin. This requires a C++ compiler. We opt for clang
