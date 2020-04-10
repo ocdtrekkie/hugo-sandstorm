@@ -1,4 +1,6 @@
-127.0.0.1:8001
+127.0.0.1:8001 {
+  root /var/git
+}
 errors stderr
 log stdout
 hugo /var/git {

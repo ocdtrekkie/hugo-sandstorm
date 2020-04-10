@@ -21,5 +21,5 @@ fi
 
 cd /opt/app
 cp post-receive /var/git/.git/hooks
-caddy &
-NODE_ENV=production HOME=/tmp npm start
+
+npm start

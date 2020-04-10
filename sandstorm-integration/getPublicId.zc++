@@ -48,10 +48,7 @@ namespace sandstorm {
       request.setId(sessionId);
       auto session = request.send().getContext().castAs<HackSessionContext>();
 
-      kj::Promise<void> promise = session
-	      .getPublicIdRequest()
-	      .send()
-	      .then([](capnp::Response<sandstorm::HackSessionContext::GetPublicIdResults>&& result) {
+      kj::Promise<void> promise = session.getPublicIdRequest().send().then([](auto result) {
           auto publicId = result.getPublicId();
           auto hostname = result.getHostname();
           auto autoUrl = result.getAutoUrl();
@@ -76,4 +73,3 @@ namespace sandstorm {
 } // namespace sandstorm
 
 KJ_MAIN(sandstorm::GetPublicIdMain)
-

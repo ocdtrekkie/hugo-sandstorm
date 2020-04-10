@@ -44,8 +44,6 @@
     <render-template
       rpcId="gitPush"
       :template="'git remote add origin ' + this.gitUrl + '\ngit push -fu origin master'"/>
-    <h2>Admin Interface</h2>
-    <p>Simple site changes can be made directly in the included <a href="/admin/">administrative interface</a>.</p>
   </div>
 </template>
 

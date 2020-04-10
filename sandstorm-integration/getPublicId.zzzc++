@@ -29,7 +29,7 @@ namespace sandstorm {
     kj::MainFunc getMain() {
        return kj::MainBuilder(context, "GetPublicId version: 0.0.2",
                              "Runs the getPublicId command from hack-session.capnp. "
-                             "Outputs the return arguments as separate lines on stdout.")
+                             "Returns the ID and the host name as two lines on stdout.")
         .expectArg("<sessionId>", KJ_BIND_METHOD(*this, setSessionId))
         .callAfterParsing(KJ_BIND_METHOD(*this, run))
         .build();
@@ -48,18 +48,21 @@ namespace sandstorm {
       request.setId(sessionId);
       auto session = request.send().getContext().castAs<HackSessionContext>();
 
-      kj::Promise<void> promise = session
-	      .getPublicIdRequest()
-	      .send()
-	      .then([](capnp::Response<sandstorm::HackSessionContext::GetPublicIdResults>&& result) {
+      kj::Promise<void> promise = session.getPublicIdRequest().send().then(
+        [](HackSessionContext::GetPublicIdResults::Reader result) {
           auto publicId = result.getPublicId();
           auto hostname = result.getHostname();
           auto autoUrl = result.getAutoUrl();
-          auto isDemoUser = result.getIsDemoUser();
-          kj::String msg = kj::str(publicId, "\n", hostname, "\n", autoUrl, "\n",
-                                   isDemoUser ? "true" : "false", "\n");
+          kj::String msg =
+            kj::str(
+              "Your content has automatically been published at\n",
+              "    ", autoUrl, "\n",
+              "You can show this content on a custom domain by adding the following\n"
+              "DNS records:\n"
+              "                  <host> IN CNAME ", hostname, "\n"
+              "    sandstorm-www.<host> IN TXT   ", publicId, "\n");
           kj::FdOutputStream(STDOUT_FILENO).write(msg.begin(), msg.size());
-        }, [] (auto e) {
+        }, [] (kj::Exception&& e) {
           auto desc = e.getDescription();
           kj::FdOutputStream(STDOUT_FILENO).write(desc.begin(), desc.size());
         });
@@ -76,4 +79,5 @@ namespace sandstorm {
 } // namespace sandstorm
 
 KJ_MAIN(sandstorm::GetPublicIdMain)
+
 
