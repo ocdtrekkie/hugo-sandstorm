@@ -1,9 +1,11 @@
 import Nuxt from "nuxt"
 import logger from "morgan"
-const exec = require("child_process").exec
+import fs from 'fs'
 import Express from "express"
 import gitBackend from "git-http-backend"
-import httpProxy from "http-proxy"
+// TODO: once Caddy 2 or something similar is in place, reinstate the
+// admin proxy.
+//import httpProxy from "http-proxy"
 const spawn = require("child_process").spawn
 
 const app = new Express()
@@ -17,17 +19,52 @@ app.set("port", port)
 
 app.get("/publicId", (req, res) => {
   const sessionId = req.headers["x-sandstorm-session-id"]
-  exec(`getPublicId ${sessionId}`, (err, rv) => {
-    if(err)
-      return res.end(err)
-    const lines = rv.split("\n")
+  let allData = ""
+  // TODO: figure out why Cap'n Proto keeps crashing when
+  // getPublicId exits so we can get rid of this weird
+  // memoization hack I had to do!
+  const file = `/var/publicid-${sessionId}`
+
+  const handleResult = () => {
+    const lines = allData.split("\n")
     const publicId = lines[0]
     const hostname = lines[1]
     const domain = publicId+"."+hostname
     const url = lines[2]
     const isDemo = lines[3] == "true"
     res.json({publicId, hostname, domain, url, isDemo})
-  })
+  }
+
+  try {
+    allData = fs.readFileSync(file, 'utf8').toString()
+  } catch (e) {
+    // nothing
+  }
+
+  const lines = allData.split("\n")
+  if (lines.length >= 4) {
+    handleResult()
+  } else {
+    const gpId = spawn('getPublicId', [sessionId])
+    allData = ""
+
+    gpId.stdout.on('data', (data) => {
+      fs.appendFileSync(file, data)
+      allData += data
+    })
+
+    gpId.on('error', (err) => {
+      return res.send(err)
+    })
+
+    gpId.on('close', (code) => {
+      if (code !== 0) {
+        return res.send(code)
+      }
+
+      handleResult()
+    })
+  }
 })
 
 app.use("/git", (req, res) => {
@@ -41,12 +78,12 @@ app.use("/git", (req, res) => {
   })).pipe(res)
 })
 
-const proxy = httpProxy.createProxyServer({
-  target: "http://127.0.0.1:8001/admin/",
-  changeOrigin: true
-})
+//const proxy = httpProxy.createProxyServer({
+// target: "http://127.0.0.1:8001/admin/",
+// changeOrigin: true
+//})
 
-app.use("/admin/", (req, res) => proxy.web(req, res))
+// app.use("/admin/", (req, res) => proxy.web(req, res))
 
 // Import and Set Nuxt.js options
 let config = require("./nuxt.config.js")

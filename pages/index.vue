@@ -1,28 +1,41 @@
 <template>
   <div>
-    <p>Your public site is available at <a :href="url" target="_blank">{{ url }}</a>.</p>
-    <div v-if="!isDemo">
-      <p>To set up your domain to point at your public site, add the following DNS records to your domain. Replace <code>blog.example.com</code> with your site's hostname.</p>
-      <table>
-        <thead>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Value</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>blog.example.com</td>
-            <td>CNAME</td>
-            <td>{{ domain }}</td>
-          </tr>
-          <tr>
-            <td>sandstorm-www.blog.example.com</td>
-            <td>TXT</td>
-            <td>{{ publicId }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <template v-if="isLoading">
+      <p>
+        Loading public site information...
+      </p>
+    </template>
+    <template v-else-if="loadError">
+      <p>
+        Unable to load public site information! Try restarting the grain.
+        This is a known bug.
+      </p>
+    </template>
+    <template v-else>
+      <p>Your public site is available at <a :href="url" rel="noopener" target="_blank">{{ url }}</a>.</p>
+      <div v-if="!isDemo">
+        <p>To set up your domain to point at your public site, add the following DNS records to your domain. Replace <code>blog.example.com</code> with your site's hostname.</p>
+        <table>
+          <thead>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Value</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>blog.example.com</td>
+              <td>CNAME</td>
+              <td>{{ domain }}</td>
+            </tr>
+            <tr>
+              <td>sandstorm-www.blog.example.com</td>
+              <td>TXT</td>
+              <td>{{ publicId }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </template>
     <h2>Editing Your Site</h2>
     <p>To check out the Git repository containing your site, first add an authorization key to Git:</p>
     <render-template
@@ -45,7 +58,11 @@
       rpcId="gitPush"
       :template="'git remote add origin ' + this.gitUrl + '\ngit push -fu origin master'"/>
     <h2>Admin Interface</h2>
-    <p>Simple site changes can be made directly in the included <a href="/admin/">administrative interface</a>.</p>
+    <p>
+      ...had to be removed temporarily because Caddy 1 isn't recommended anymore and
+      <a target="_blank" rel="noopener" href="https://caddy.community/t/new-old-plugin-http-filebrowser/5103">Caddy 2 needs some work to get working well with Hugo</a>.
+      <a target="_blank" rel="noopener" href="https://github.com/johnbintz/hugo-sandstorm">Want to help?</a>
+    </p>
   </div>
 </template>
 
@@ -58,7 +75,9 @@
       isDemo: true,
       url: "",
       domain: "",
-      publicId: ""
+      publicId: "",
+      isLoading: true,
+      loadError: null
     }),
     computed: {
       gitHost: () => {
@@ -74,17 +93,25 @@
           return ""
       }
     },
-    mounted() {
-      fetch("/publicId", {
-        credentials: "same-origin"
-      }).then((r) => r.json())
-      .then((r) => {
-        this.isDemo = r.isDemo
-        this.url = r.url
-        this.publicId = r.publicId
-        this.domain = r.domain
-      })
-      .catch(console.error)
+    // mounted actions occur immediately. we use async here to
+    // simplify promise handling.
+    async mounted () {
+      this.isLoading = true
+      try {
+        const result = await fetch("/publicId", {
+          credentials: "same-origin"
+        })
+        const jsonResult = await result.json()
+        this.isDemo = jsonResult.isDemo
+        this.url = jsonResult.url
+        this.publicId = jsonResult.publicId
+        this.domain = jsonResult.domain
+      } catch (e) {
+        console.error(e)
+        this.loadError = e
+      } finally {
+        this.isLoading = false
+      }
     },
     head: {
       title: "Home"
