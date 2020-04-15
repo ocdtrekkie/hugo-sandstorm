@@ -1,17 +1,23 @@
 # V0.69.0~2020-04-14
 
- * Upgrade Hugo.
- * Replace Caddy with Cloud Commander for admin file management.
+* Upgrade Hugo to 0.69.0.
+  * Note: If you use inline HTML in your Markdown, add the following to `config.toml`:
+
+    ```
+    [markup.goldmark.renderer]
+    unsafe= true
+    ```
+* Replace Caddy with Cloud Commander for admin file management.
 
 # V0.20-sandstorm2
 
- * Upgrade Hugo.
- * Switch to newer, easier-to-maintain launch screen and Git server setup.
+* Upgrade Hugo.
+* Switch to newer, easier-to-maintain launch screen and Git server setup.
 
 # V0.19-sandstorm1
 
- * Launch screen improvements.
+* Launch screen improvements.
 
 # V0.19-sandstorm0 (2017-03-17)
 
- * Initial release.
+* Initial release.

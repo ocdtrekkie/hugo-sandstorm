@@ -17,7 +17,7 @@ const pkgdef :Spk.PackageDefinition = (
     # This manifest is included in your app package to tell Sandstorm
     # about your app.
 
-    appTitle = (defaultText = "Hugo (new)"),
+    appTitle = (defaultText = "Hugo"),
 
     appVersion = 4,  # Increment this for every release.
 
@@ -161,6 +161,7 @@ const pkgdef :Spk.PackageDefinition = (
     "usr/lib/node_modules/npm/node_modules/node-gyp",
     "usr/local/lib/python2.7/dist-packages/pygments",
     "opt/app/node_modules/cloudcmd",
+    "opt/app/node_modules/edward",
   ],
   # Fill this list with more names of files or directories that should be
   # included in your package, even if not listed in sandstorm-files.list.

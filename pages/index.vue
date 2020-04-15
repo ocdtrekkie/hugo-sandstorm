@@ -60,6 +60,9 @@
     <h2>Upgrade notes from the 0.20 Sandstorm release:</h2>
     <ul>
       <li>
+
+      </li>
+      <li>
         If you were using inline HTML in any Markdown files, enter the following into
         your <code>config.toml</code> file:
 <pre>
