@@ -90,13 +90,13 @@ lib64/ld-linux-x86-64.so.2
 opt/app
 opt/app/.babelrc
 opt/app/.cloudcmd.menu.js
-opt/app/.nuxt/dist/0.nuxt.bundle.fc6a63b5cbea35f4cff4.js
+opt/app/.nuxt/dist/0.nuxt.bundle.58cdddcc661ce568abbd.js
 opt/app/.nuxt/dist/1.nuxt.bundle.89a9958091c34dcc68ed.js
 opt/app/.nuxt/dist/index.html
-opt/app/.nuxt/dist/manifest.ec83ae51e1709ba04405.js
+opt/app/.nuxt/dist/manifest.0ccde45fe1c448af06e2.js
 opt/app/.nuxt/dist/nuxt.bundle.dbf51a8ed53569a6c1b0.js
 opt/app/.nuxt/dist/server-bundle.json
-opt/app/.nuxt/dist/vendor.bundle.ec83ae51e1709ba04405.js
+opt/app/.nuxt/dist/vendor.bundle.0ccde45fe1c448af06e2.js
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/node_modules/.bin/babel-node
@@ -1190,6 +1190,7 @@ opt/app/node_modules/cloudcmd/dist/columns/name-size.css
 opt/app/node_modules/cloudcmd/dist/config.css
 opt/app/node_modules/cloudcmd/dist/index.html
 opt/app/node_modules/cloudcmd/dist/modules/config.js
+opt/app/node_modules/cloudcmd/dist/modules/contact.js
 opt/app/node_modules/cloudcmd/dist/modules/edit-file.js
 opt/app/node_modules/cloudcmd/dist/modules/edit.js
 opt/app/node_modules/cloudcmd/dist/modules/menu.js
@@ -1198,6 +1199,7 @@ opt/app/node_modules/cloudcmd/dist/modules/polyfill.js
 opt/app/node_modules/cloudcmd/dist/modules/polyfill.js.map
 opt/app/node_modules/cloudcmd/dist/modules/terminal-run.js
 opt/app/node_modules/cloudcmd/dist/modules/terminal-run.js.map
+opt/app/node_modules/cloudcmd/dist/modules/upload.js
 opt/app/node_modules/cloudcmd/dist/modules/user-menu.js
 opt/app/node_modules/cloudcmd/dist/modules/user-menu.js.map
 opt/app/node_modules/cloudcmd/dist/modules/view.js
@@ -1250,6 +1252,7 @@ opt/app/node_modules/cloudcmd/tmpl/fs/link.hbs
 opt/app/node_modules/cloudcmd/tmpl/fs/panel.hbs
 opt/app/node_modules/cloudcmd/tmpl/fs/path.hbs
 opt/app/node_modules/cloudcmd/tmpl/fs/pathLink.hbs
+opt/app/node_modules/cloudcmd/tmpl/upload.hbs
 opt/app/node_modules/co/index.js
 opt/app/node_modules/co/package.json
 opt/app/node_modules/collection-visit/index.js

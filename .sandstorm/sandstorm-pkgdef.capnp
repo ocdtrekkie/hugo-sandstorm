@@ -160,6 +160,7 @@ const pkgdef :Spk.PackageDefinition = (
     "opt/app/node_modules/json-loader",
     "usr/lib/node_modules/npm/node_modules/node-gyp",
     "usr/local/lib/python2.7/dist-packages/pygments",
+    "opt/app/node_modules/cloudcmd",
   ],
   # Fill this list with more names of files or directories that should be
   # included in your package, even if not listed in sandstorm-files.list.
