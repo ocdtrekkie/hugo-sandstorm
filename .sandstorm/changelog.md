@@ -1,3 +1,8 @@
+# V0.69.0~2020-04-14
+
+ * Upgrade Hugo.
+ * Replace Caddy with Cloud Commander for admin file management.
+
 # V0.20-sandstorm2
 
  * Upgrade Hugo.

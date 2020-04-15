@@ -21,7 +21,7 @@ const pkgdef :Spk.PackageDefinition = (
 
     appVersion = 4,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "0.69.0-sandstorm"),
+    appMarketingVersion = (defaultText = "0.69.0~2020-04-14"),
     # Human-readable representation of appVersion. Should match the way you
     # identify versions of your app in documentation and marketing.
 
@@ -123,8 +123,8 @@ const pkgdef :Spk.PackageDefinition = (
         # Screenshots to use for marketing purposes.  Examples below.
         # Sizes are given in device-independent pixels, so if you took these
         # screenshots on a Retina-style high DPI screen, divide each dimension by two.
-        (width = 1366, height = 672, png = embed "app-graphics/screenshot1.png"),
-        (width = 1366, height = 672, png = embed "app-graphics/screenshot2.png"),
+        (width = 758, height = 718, png = embed "app-graphics/site_setup.png"),
+        (width = 761, height = 861, png = embed "app-graphics/admin_interface.png"),
       ],
       changeLog = (defaultText = embed "changelog.md"),
       # Documents the history of changes in Github-flavored markdown format (with the same restrictions
@@ -143,7 +143,8 @@ const pkgdef :Spk.PackageDefinition = (
       ( sourcePath = "/",    # Then search the system root directory.
         hidePaths = [ "home", "proc", "sys",
                       "etc/hosts", "etc/host.conf",
-                      "etc/passwd", "etc/nsswitch.conf", "etc/resolv.conf" ]
+                      "etc/passwd", "etc/nsswitch.conf", "etc/resolv.conf",
+                      "opt/app/.git"]
         # You probably don't want the app pulling files from these places,
         # so we hide them. Note that /dev, /var, and /tmp are implicitly
         # hidden because Sandstorm itself provides them.
@@ -245,6 +246,7 @@ const myCommand :Spk.Manifest.Command = (
     (key = "SANDSTORM", value = "1"),
     (key = "HOME", value = "/var"),
     (key = "NODE_ENV", value = "production"),
+    (key = "THREAD_IT_COUNT", value = "0"),
     # Export SANDSTORM=1 into the environment, so that apps running within Sandstorm
     # can detect if $SANDSTORM="1" at runtime, switching UI and/or backend to use
     # the app's Sandstorm-specific integration code.

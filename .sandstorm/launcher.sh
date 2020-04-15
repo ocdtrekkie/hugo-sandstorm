@@ -22,4 +22,7 @@ fi
 cd /opt/app
 cp post-receive /var/git/.git/hooks
 
+# cloudcmd wants this in your home directory
+ln -sf /opt/app/.cloudcmd.menu.js /var/.cloudcmd.menu.js
+
 npm start

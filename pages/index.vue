@@ -57,12 +57,25 @@
     <render-template
       rpcId="gitPush"
       :template="'git remote add origin ' + this.gitUrl + '\ngit push -fu origin master'"/>
-    <h2>Admin Interface</h2>
+    <h2>Upgrade notes from the 0.20 Sandstorm release:</h2>
+    <ul>
+      <li>
+        If you were using inline HTML in any Markdown files, enter the following into
+        your <code>config.toml</code> file:
+<pre>
+[markup.goldmark.renderer]
+unsafe= true
+</pre>
+      </li>
+    </ul>
     <p>
-      ...had to be removed temporarily because Caddy 1 isn't recommended anymore and
-      <a target="_blank" rel="noopener" href="https://caddy.community/t/new-old-plugin-http-filebrowser/5103">Caddy 2 needs some work to get working well with Hugo</a>.
-      <a target="_blank" rel="noopener" href="https://github.com/johnbintz/hugo-sandstorm">Want to help?</a>
+      Be sure to <a href="https://gohugo.io/news/">read through the Hugo release notes</a>
+      if you notice any other odd behavior after upgrading.
     </p>
+    <h2>Admin Interface (<a href="https://cloudcmd.io/">Cloud Commander</a>)</h2>
+    <a :class="{disabled: !dirty}" class="button" @click="commitLocal">Commit &amp; publish local changes</a>
+    <a :class="{disabled: !dirty}" class="button" @click="deleteLocal">Delete local changes (git reset --hard)</a>
+    <iframe id="files" src="/admin" style="width: 100%; height: 800px; margin-top: 1rem"></iframe>
   </div>
 </template>
 
@@ -77,7 +90,8 @@
       domain: "",
       publicId: "",
       isLoading: true,
-      loadError: null
+      loadError: null,
+      dirty: false
     }),
     computed: {
       gitHost: () => {
@@ -112,9 +126,37 @@
       } finally {
         this.isLoading = false
       }
+
+      setInterval(this.checkDirty, 5000)
     },
     head: {
       title: "Home"
+    },
+    methods: {
+      async commitLocal () {
+        if (!this.dirty) return
+
+        if (confirm('Are you sure?')) {
+          await fetch('/commit')
+        }
+      },
+      async deleteLocal () {
+        if (!this.dirty) return
+
+        if (confirm('Are you sure?')) {
+          await fetch('/reset-local')
+
+          document.getElementById('files').contentWindow.location.reload(true)
+        }
+      },
+      async checkDirty () {
+        const response = await fetch('/dirty')
+        const json = await response.json()
+
+        if (json.hasOwnProperty('dirty')) {
+          this.dirty = json.dirty
+        }
+      }
     },
     components: {RenderTemplate}
   }

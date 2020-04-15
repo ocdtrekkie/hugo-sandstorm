@@ -3,9 +3,8 @@ import logger from "morgan"
 import fs from 'fs'
 import Express from "express"
 import gitBackend from "git-http-backend"
-// TODO: once Caddy 2 or something similar is in place, reinstate the
-// admin proxy.
-//import httpProxy from "http-proxy"
+import cloudcmd from "cloudcmd"
+import io from 'socket.io'
 const spawn = require("child_process").spawn
 
 const app = new Express()
@@ -78,12 +77,108 @@ app.use("/git", (req, res) => {
   })).pipe(res)
 })
 
-//const proxy = httpProxy.createProxyServer({
-// target: "http://127.0.0.1:8001/admin/",
-// changeOrigin: true
-//})
+const runCommand = (cmd, ...args) => {
+  return new Promise((resolve, reject) => {
+    const spawnCmd = spawn(cmd, args)
 
-// app.use("/admin/", (req, res) => proxy.web(req, res))
+    spawnCmd.stdout.on('data', (data) => {
+      console.log(data.toString())
+    })
+
+    spawnCmd.on('error', (err) => {
+      res.send(err)
+
+      reject(err)
+    })
+
+    spawnCmd.on('close', (code) => {
+      if (code === 0) {
+        resolve(true)
+        return true
+      } else {
+        reject(new Error(code))
+      }
+    })
+  })
+}
+
+app.get('/dirty', async (req, res) => {
+  const currentDir = process.cwd()
+
+  process.chdir('/var/git')
+
+  const spawnCmd = spawn('git', ['diff', '--exit-code'])
+
+  spawnCmd.on('close', (code) => {
+    res.json({ dirty: code !== 0 })
+  })
+
+  process.chdir(currentDir)
+})
+
+app.use('/commit', async (req, res) => {
+  const currentDir = process.cwd()
+
+  try {
+    process.chdir('/var/git')
+    await runCommand('git', 'add', '.')
+    await runCommand('git', 'commit', '-m', 'From admin')
+    process.chdir(currentDir)
+    await runCommand('/opt/app/post-receive')
+
+    res.json({ok: true})
+  } catch (e) {
+    res.send({error: e.msg})
+  } finally {
+    process.chdir(currentDir)
+  }
+})
+
+app.use('/reset-local', async (req, res) => {
+  const currentDir = process.cwd()
+
+  try {
+    process.chdir('/var/git')
+    await runCommand('git', 'reset', '--hard')
+    process.chdir(currentDir)
+
+    res.json({ok: true})
+  } catch (e) {
+    res.send({error: e.msg})
+  } finally {
+    process.chdir(currentDir)
+  }
+})
+
+const { createConfigManager, configPath } = cloudcmd
+
+const socket = io.listen(server, { path: "/admin/socket.io"})
+
+const cloudConfig = {
+  name: "Hugo admin",
+  root: "/var/git",
+  open: false,
+  prefix: "/admin",
+  console: false,
+  terminal: false,
+  oneFilePanel: true,
+  configDialog: false,
+  configAuth: false,
+  keysPanel: true,
+}
+
+const filePicker = {
+  data: { FilePicker: { key: 'key' } }
+}
+
+const cloudModules = { filePicker }
+
+const configManager = createConfigManager({ configPath })
+
+app.use("/admin", cloudcmd({
+  socket,
+  config: cloudConfig
+}))
 
 // Import and Set Nuxt.js options
 let config = require("./nuxt.config.js")
