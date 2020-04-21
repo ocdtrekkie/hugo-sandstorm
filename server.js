@@ -17,12 +17,20 @@ const port = process.env.PORT || "8000"
 app.set("port", port)
 
 app.get("/publicId", (req, res) => {
+  // For those reusing getPublicId, keep in mind that the session ID from the
+  // headers isn't used to generate the address for a grain, only the grain's
+  // internal ID. Once you've generated it once, that's it.
+  //
+  // See https://github.com/sandstorm-io/sandstorm/blob/1a1f5650472904e137393af077a3d90f094cd888/shell/imports/server/hack-session.js#L334-L365
+  // for more information.
   const sessionId = req.headers["x-sandstorm-session-id"]
   let allData = ""
-  // TODO: figure out why Cap'n Proto keeps crashing when
-  // getPublicId exits so we can get rid of this weird
-  // memoization hack I had to do!
-  const file = `/var/publicid-${sessionId}`
+  // TODO: needed until https://github.com/sandstorm-io/sandstorm/pull/3292 is merged
+  //
+  // If this app is running in demo mode, its data will be thrown away in an hour,
+  // and the public ID assigned to the grain will also go away, so it's still OK
+  // to keep this file around, even in a demo scenario.
+  const file = `/var/publicid`
 
   const handleResult = () => {
     const lines = allData.split("\n")
@@ -37,7 +45,7 @@ app.get("/publicId", (req, res) => {
   try {
     allData = fs.readFileSync(file, 'utf8').toString()
   } catch (e) {
-    // nothing
+    // file probably doesn't exist
   }
 
   const lines = allData.split("\n")

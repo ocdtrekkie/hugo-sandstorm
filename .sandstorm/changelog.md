@@ -1,4 +1,4 @@
-# V0.69.0~2020-04-14
+# V0.69.0~2020-04-21
 
 * Upgrade Hugo to 0.69.0.
   * Note: If you use inline HTML in your Markdown, add the following to `config.toml`:

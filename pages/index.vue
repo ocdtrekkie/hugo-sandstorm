@@ -47,9 +47,9 @@
       :template="'git clone -c credential.helper=store ' + this.gitUrl + ' site'"/>
     <p>Here are a few pointers to help you get started:</p>
     <ul>
-      <li>Choose a theme to make your site look nice. Hugo's <a href="https://themes.gohugo.io">theme showcase</a> is a good place to start.</li>
+      <li>Choose a theme to make your site look nice. Hugo's <a target="_blank" rel="noopener" href="https://themes.gohugo.io">theme showcase</a> is a good place to start.</li>
       <li>Add the theme to your Git repository as a subtree at <code>themes/themename</code>.</li>
-      <li>Add <code>theme = "themename"</code> to <code>Config.toml</code>.</li>
+      <li>Add <code>theme = "themename"</code> to <code>config.toml</code>.</li>
       <li>Push the repository, and your new site will be immediately published.</li>
     </ul>
     <h2>Pushing Existing Site</h2>
@@ -60,9 +60,6 @@
     <h2>Upgrade notes from the 0.20 Sandstorm release:</h2>
     <ul>
       <li>
-
-      </li>
-      <li>
         If you were using inline HTML in any Markdown files, enter the following into
         your <code>config.toml</code> file:
 <pre>
@@ -70,12 +67,17 @@
 unsafe= true
 </pre>
       </li>
+      <li>
+        There have been updates/changes to how previous/next item handling has
+        changed over time. Ensure your previous/next item handling is
+        working as intended.
+      </li>
     </ul>
     <p>
-      Be sure to <a href="https://gohugo.io/news/">read through the Hugo release notes</a>
+      Be sure to <a href="https://gohugo.io/news/" target="_blank" rel="noopener">read through the Hugo release notes</a>
       if you notice any other odd behavior after upgrading.
     </p>
-    <h2>Admin Interface (<a href="https://cloudcmd.io/">Cloud Commander</a>)</h2>
+    <h2>Admin Interface (<a href="https://cloudcmd.io/" target="_blank" rel="noopener">Cloud Commander</a>)</h2>
     <a :class="{disabled: !dirty}" class="button" @click="commitLocal">Commit &amp; publish local changes</a>
     <a :class="{disabled: !dirty}" class="button" @click="deleteLocal">Delete local changes (git reset --hard)</a>
     <iframe id="files" src="/admin" style="width: 100%; height: 800px; margin-top: 1rem"></iframe>
@@ -114,20 +116,23 @@ unsafe= true
     // simplify promise handling.
     async mounted () {
       this.isLoading = true
-      try {
-        const result = await fetch("/publicId", {
-          credentials: "same-origin"
-        })
-        const jsonResult = await result.json()
-        this.isDemo = jsonResult.isDemo
-        this.url = jsonResult.url
-        this.publicId = jsonResult.publicId
-        this.domain = jsonResult.domain
-      } catch (e) {
-        console.error(e)
-        this.loadError = e
-      } finally {
-        this.isLoading = false
+
+      // TODO: needed until https://github.com/sandstorm-io/sandstorm/pull/3292 is merged
+      let publicIdLoadTries = 5
+
+      while (publicIdLoadTries > 0 && !this.url) {
+        try {
+          await this.fetchPublicId()
+        } catch (e) {
+          // wait 5 seconds and try again
+          await new Promise((resolve) => { setTimeout(resolve, 5000) })
+
+          publicIdLoadTries -= 1
+
+          if (publicIdLoadTries === 0) {
+            this.loadError = e
+          }
+        }
       }
 
       setInterval(this.checkDirty, 5000)
@@ -136,6 +141,23 @@ unsafe= true
       title: "Home"
     },
     methods: {
+      async fetchPublicId () {
+        try {
+          const result = await fetch("/publicId", {
+            credentials: "same-origin"
+          })
+          const jsonResult = await result.json()
+          this.isDemo = jsonResult.isDemo
+          this.url = jsonResult.url
+          this.publicId = jsonResult.publicId
+          this.domain = jsonResult.domain
+        } catch (e) {
+          console.error(e)
+          this.loadError = e
+        } finally {
+          this.isLoading = false
+        }
+      },
       async commitLocal () {
         if (!this.dirty) return
 
