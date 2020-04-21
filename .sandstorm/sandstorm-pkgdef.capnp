@@ -9,7 +9,7 @@ const pkgdef :Spk.PackageDefinition = (
   # The package definition. Note that the spk tool looks specifically for the
   # "pkgdef" constant.
 
-  id = "4vnyd4c929g8dpns2zer8afgrsv1j7aknq4snyw3tu9p4vm4mwc0",
+  id = "ksyud8q9h7rx9u001jn38216xe75a200avh7tg267wss6pq9zfkh",
   # Your app ID is actually its public key. The private key was placed in
   # your keyring. All updates must be signed with the same key.
 
@@ -21,7 +21,7 @@ const pkgdef :Spk.PackageDefinition = (
 
     appVersion = 4,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "0.69.0~2020-04-14"),
+    appMarketingVersion = (defaultText = "0.69.0~2020-04-21"),
     # Human-readable representation of appVersion. Should match the way you
     # identify versions of your app in documentation and marketing.
 
