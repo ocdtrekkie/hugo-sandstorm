@@ -2,13 +2,14 @@
   <div>
     <template v-if="isLoading">
       <p>
-        Loading public site information...
+        Loading public site information. This may take a while!
+        This is <a href="https://github.com/sandstorm-io/sandstorm/pull/3292" target="_blank" rel="noopener">a known bug</a>.
       </p>
     </template>
     <template v-else-if="loadError">
       <p>
         Unable to load public site information! Try restarting the grain.
-        This is a known bug.
+        This is <a href="https://github.com/sandstorm-io/sandstorm/pull/3292" target="_blank" rel="noopener">a known bug</a>.
       </p>
     </template>
     <template v-else>
@@ -135,6 +136,8 @@ unsafe= true
         }
       }
 
+      this.isLoading = false
+
       setInterval(this.checkDirty, 5000)
     },
     head: {
@@ -153,9 +156,7 @@ unsafe= true
           this.domain = jsonResult.domain
         } catch (e) {
           console.error(e)
-          this.loadError = e
-        } finally {
-          this.isLoading = false
+          throw e
         }
       },
       async commitLocal () {
