@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-export HUGO_VERSION=0.69.0
-export NODE_VERSION=10
+export HUGO_VERSION=$(cat /opt/app/hugo-version)
+export NODE_VERSION=$(cat /opt/app/.nvmrc)
 
 apt-get update
 apt-get install -y git

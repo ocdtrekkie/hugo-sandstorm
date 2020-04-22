@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>hugo-sandstorm version {{hugoVersion}}</h1>
     <template v-if="isLoading">
       <p>
         Loading public site information. This may take a while!
@@ -97,7 +98,8 @@ unsafe= true
       publicId: "",
       isLoading: true,
       loadError: null,
-      dirty: false
+      dirty: false,
+      hugoVersion: process.env.hugoVersion
     }),
     computed: {
       gitHost: () => {
