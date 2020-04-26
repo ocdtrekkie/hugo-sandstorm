@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+
+require 'httparty'
+require 'time'
+
+version = ARGV[0]
+
+unless version
+  puts "Usage: #{$0} <version>"
+
+  exit 1
+end
+
+verify_url = "https://github.com/gohugoio/hugo/releases/download/v#{version}/hugo_#{version}_Linux-64bit.deb"
+
+response = HTTParty.get(verify_url)
+
+unless response.code >= 200 && response.code < 300
+  puts "Error verifying release exists!"
+  puts "  URL checked: #{verify_url}"
+  puts "  Response code: #{response.code}"
+  exit 1
+end
+
+puts "#{version} exists, updating files"
+
+today = Time.now.strftime('%Y-%m-%d')
+
+File.open('hugo-version', 'w') { |fh| fh.puts version }
+File.open('.sandstorm/app-marketing-version', 'w') { |fh| fh.puts "#{version}~#{today}" }
+
+lines = File.readlines('.sandstorm/sandstorm-pkgdef.capnp')
+
+lines = lines.map do |line|
+  next line unless line['appVersion']
+
+  line.gsub(/= ([0-9])+,/) { |m| "= #{$1.to_i + 1}," }
+end
+
+File.open('.sandstorm/sandstorm-pkgdef.capnp', 'w') { |fh| fh.print lines.join }
+
+puts <<-TXT
+
+Now do this:
+
+* vagrant-spk vm destroy
+* vagrant-spk vm up
+* vagrant-spk dev
+* Test fresh install
+* vagrant-spk pack ../hugo-sandstorm.pkg
+* Test upgrade install
+TXT

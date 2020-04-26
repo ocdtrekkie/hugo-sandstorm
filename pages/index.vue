@@ -66,7 +66,7 @@
         your <code>config.toml</code> file:
 <pre>
 [markup.goldmark.renderer]
-unsafe= true
+unsafe = true
 </pre>
       </li>
       <li>
@@ -77,7 +77,8 @@ unsafe= true
     </ul>
     <p>
       Be sure to <a href="https://gohugo.io/news/" target="_blank" rel="noopener">read through the Hugo release notes</a>
-      if you notice any other odd behavior after upgrading.
+      if you notice any other odd behavior after upgrading. These notes will
+      go away after June 1, 2020.
     </p>
     <h2>Admin Interface (<a href="https://cloudcmd.io/" target="_blank" rel="noopener">Cloud Commander</a>)</h2>
     <a :class="{disabled: !dirty}" class="button" @click="commitLocal">Commit &amp; publish local changes</a>

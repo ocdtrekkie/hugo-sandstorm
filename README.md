@@ -34,3 +34,9 @@ Visit [http://local.sandstorm.io:6080/](http://local.sandstorm.io:6080/) in a we
 Note: when you want to fork this repo and create actual app packages for the app
 store you would need either the original app key or
 [create a new one and make your own version of the app](https://docs.sandstorm.io/en/latest/developing/publishing-apps/).
+
+## Upgrades
+
+* You'll need Ruby 2.6 and `gem install httparty`.
+* Run `bin/upgrade_hugo <new version>`.
+* Follow the directions.
