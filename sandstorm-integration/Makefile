@@ -1,6 +1,6 @@
 # You may override the following vars on the command line to suit
 # your config.
-CXX=clang++
+CXX=g++
 CXXFLAGS=-O2 -Wall
 
 # You generally should not modify these.

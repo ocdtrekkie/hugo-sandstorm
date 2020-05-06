@@ -10,12 +10,11 @@ export NODE_VERSION=$(cat /opt/app/.nvmrc)
 
 apt-get update
 apt-get install -y git
-
+apt-get install -y g++ autoconf pkg-config libtool
 # First, get capnproto from master and install it to
-# /usr/local/bin. This requires a C++ compiler. We opt for clang
-# because that's what Sandstorm is typically compiled with.
+# /usr/local/bin. This requires a C++ compiler. clang wasn't working
+# well with building getPublicId so I switched to g++.
 if [ ! -e /usr/local/bin/capnp ] ; then
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q clang autoconf pkg-config libtool
     cd /tmp
     if [ ! -e capnproto ]; then git clone https://github.com/capnproto/capnproto; fi
     cd capnproto
