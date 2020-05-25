@@ -90,13 +90,13 @@ lib64/ld-linux-x86-64.so.2
 opt/app
 opt/app/.babelrc
 opt/app/.cloudcmd.menu.js
-opt/app/.nuxt/dist/0.nuxt.bundle.1bf88d6e0fa25164aa3c.js
+opt/app/.nuxt/dist/0.nuxt.bundle.0a5ce054de581e299a7a.js
 opt/app/.nuxt/dist/1.nuxt.bundle.89a9958091c34dcc68ed.js
 opt/app/.nuxt/dist/index.html
-opt/app/.nuxt/dist/manifest.a3696226345972520996.js
-opt/app/.nuxt/dist/nuxt.bundle.3bbace410ef249abd1ca.js
+opt/app/.nuxt/dist/manifest.a9ec11fa94de92e9cd5b.js
+opt/app/.nuxt/dist/nuxt.bundle.5f5ed7bcae4fd89d6371.js
 opt/app/.nuxt/dist/server-bundle.json
-opt/app/.nuxt/dist/vendor.bundle.a3696226345972520996.js
+opt/app/.nuxt/dist/vendor.bundle.a9ec11fa94de92e9cd5b.js
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/hugo-version
@@ -621,6 +621,7 @@ opt/app/node_modules/babel-core/lib/transformation/plugin-pass.js
 opt/app/node_modules/babel-core/lib/transformation/plugin.js
 opt/app/node_modules/babel-core/lib/util.js
 opt/app/node_modules/babel-core/node_modules/debug/node.js
+opt/app/node_modules/babel-core/node_modules/debug/package.json
 opt/app/node_modules/babel-core/node_modules/debug/src/debug.js
 opt/app/node_modules/babel-core/node_modules/debug/src/node.js
 opt/app/node_modules/babel-core/package.json
@@ -1050,6 +1051,7 @@ opt/app/node_modules/caniuse-db/features-json/text-size-adjust.json
 opt/app/node_modules/caniuse-db/features-json/transforms2d.json
 opt/app/node_modules/caniuse-db/features-json/transforms3d.json
 opt/app/node_modules/caniuse-db/features-json/user-select-none.json
+opt/app/node_modules/caniuse-db/package.json
 opt/app/node_modules/chalk/index.js
 opt/app/node_modules/chalk/package.json
 opt/app/node_modules/chalk/templates.js
@@ -1822,6 +1824,7 @@ opt/app/node_modules/daffy/lib/daffy.js
 opt/app/node_modules/daffy/package.json
 opt/app/node_modules/date-fns/_lib/requiredArgs/index.js
 opt/app/node_modules/date-fns/_lib/toInteger/index.js
+opt/app/node_modules/date-fns/package.json
 opt/app/node_modules/date-fns/parseISO/index.js
 opt/app/node_modules/date-fns/parseISO/package.json
 opt/app/node_modules/debug/node_modules/ms/index.js
@@ -1979,6 +1982,7 @@ opt/app/node_modules/ee-first/package.json
 opt/app/node_modules/ejs/lib/ejs.js
 opt/app/node_modules/ejs/lib/utils.js
 opt/app/node_modules/ejs/package.json
+opt/app/node_modules/electron-to-chromium/package.json
 opt/app/node_modules/electron-to-chromium/versions.js
 opt/app/node_modules/emojis-list/index.js
 opt/app/node_modules/emojis-list/package.json
@@ -2304,6 +2308,7 @@ opt/app/node_modules/has-binary2/node_modules/isarray/package.json
 opt/app/node_modules/has-binary2/package.json
 opt/app/node_modules/has-flag/index.js
 opt/app/node_modules/has-flag/package.json
+opt/app/node_modules/has-symbols/package.json
 opt/app/node_modules/has-symbols/shams.js
 opt/app/node_modules/has-value/index.js
 opt/app/node_modules/has-value/package.json
@@ -2335,6 +2340,7 @@ opt/app/node_modules/htmlparser2/node_modules/entities/maps/decode.json
 opt/app/node_modules/htmlparser2/node_modules/entities/maps/entities.json
 opt/app/node_modules/htmlparser2/node_modules/entities/maps/legacy.json
 opt/app/node_modules/htmlparser2/node_modules/entities/maps/xml.json
+opt/app/node_modules/htmlparser2/node_modules/entities/package.json
 opt/app/node_modules/htmlparser2/package.json
 opt/app/node_modules/http-auth/package.json
 opt/app/node_modules/http-auth/src/auth/base.js
@@ -2798,6 +2804,7 @@ opt/app/node_modules/mellow/lib/mellow.js
 opt/app/node_modules/mellow/package.json
 opt/app/node_modules/memory-fs/lib/join.js
 opt/app/node_modules/memory-fs/lib/normalize.js
+opt/app/node_modules/memory-fs/package.json
 opt/app/node_modules/merge-descriptors/index.js
 opt/app/node_modules/merge-descriptors/package.json
 opt/app/node_modules/methods/index.js
@@ -4200,6 +4207,7 @@ usr/lib/node_modules/npm/node_modules/jsonparse/package.json
 usr/lib/node_modules/npm/node_modules/latest-version/index.js
 usr/lib/node_modules/npm/node_modules/latest-version/package.json
 usr/lib/node_modules/npm/node_modules/libnpm/fetch.js
+usr/lib/node_modules/npm/node_modules/libnpm/package.json
 usr/lib/node_modules/npm/node_modules/lowercase-keys/index.js
 usr/lib/node_modules/npm/node_modules/lowercase-keys/package.json
 usr/lib/node_modules/npm/node_modules/lru-cache/index.js

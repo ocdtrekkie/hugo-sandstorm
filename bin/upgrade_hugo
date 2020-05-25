@@ -47,6 +47,6 @@ Now do this:
 * vagrant-spk vm up
 * vagrant-spk dev
 * Test fresh install
-* vagrant-spk pack ../hugo-sandstorm.pkg
+* vagrant-spk pack ../hugo-sandstorm.spk
 * Test upgrade install
 TXT
