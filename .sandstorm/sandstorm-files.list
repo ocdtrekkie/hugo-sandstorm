@@ -90,13 +90,13 @@ lib64/ld-linux-x86-64.so.2
 opt/app
 opt/app/.babelrc
 opt/app/.cloudcmd.menu.js
-opt/app/.nuxt/dist/0.nuxt.bundle.6546721b94871afdf1a0.js
+opt/app/.nuxt/dist/0.nuxt.bundle.db62f68fec4fd5eb3b91.js
 opt/app/.nuxt/dist/1.nuxt.bundle.89a9958091c34dcc68ed.js
 opt/app/.nuxt/dist/index.html
-opt/app/.nuxt/dist/manifest.6e508dce5813ab96f12a.js
-opt/app/.nuxt/dist/nuxt.bundle.ad24339c7560e87914d2.js
+opt/app/.nuxt/dist/manifest.c392825db031b79346a6.js
+opt/app/.nuxt/dist/nuxt.bundle.a6e53aa463d5ff4a2745.js
 opt/app/.nuxt/dist/server-bundle.json
-opt/app/.nuxt/dist/vendor.bundle.6e508dce5813ab96f12a.js
+opt/app/.nuxt/dist/vendor.bundle.c392825db031b79346a6.js
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/hugo-version

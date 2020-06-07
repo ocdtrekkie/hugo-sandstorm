@@ -59,27 +59,6 @@
     <render-template
       rpcId="gitPush"
       :template="'git remote add origin ' + this.gitUrl + '\ngit push -fu origin master'"/>
-    <h2>Upgrade notes from the 0.20 Sandstorm release:</h2>
-    <ul>
-      <li>
-        If you were using inline HTML in any Markdown files, enter the following into
-        your <code>config.toml</code> file:
-<pre>
-[markup.goldmark.renderer]
-unsafe = true
-</pre>
-      </li>
-      <li>
-        There have been updates/changes to how previous/next item handling has
-        changed over time. Ensure your previous/next item handling is
-        working as intended.
-      </li>
-    </ul>
-    <p>
-      Be sure to <a href="https://gohugo.io/news/" target="_blank" rel="noopener">read through the Hugo release notes</a>
-      if you notice any other odd behavior after upgrading. These notes will
-      go away after June 1, 2020.
-    </p>
     <h2>Admin Interface (<a href="https://cloudcmd.io/" target="_blank" rel="noopener">Cloud Commander</a>)</h2>
     <a :class="{disabled: !dirty}" class="button" @click="commitLocal">Commit &amp; publish local changes</a>
     <a :class="{disabled: !dirty}" class="button" @click="deleteLocal">Delete local changes (git reset --hard)</a>
