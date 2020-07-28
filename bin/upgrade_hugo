@@ -43,9 +43,7 @@ puts <<-TXT
 
 Now do this:
 
-* vagrant-spk vm destroy
-* vagrant-spk vm up
-* vagrant-spk dev
+* bin/test_hugo
 * Test fresh install
 * vagrant-spk pack ../hugo-sandstorm.spk
 * Test upgrade install

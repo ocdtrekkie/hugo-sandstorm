@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd .sandstorm
+vagrant destroy -f
+cd ..
+vagrant-spk vm up
+xdg-open http://local.sandstorm.io:6080/
+vagrant-spk dev
+
+echo "If everything went well:"
+echo
+echo "vagrant-spk pack ../hugo-sandstorm.spk"
