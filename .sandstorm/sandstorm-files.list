@@ -90,13 +90,13 @@ lib64/ld-linux-x86-64.so.2
 opt/app
 opt/app/.babelrc
 opt/app/.cloudcmd.menu.js
-opt/app/.nuxt/dist/0.nuxt.bundle.eae3a1c365d9d609bffc.js
+opt/app/.nuxt/dist/0.nuxt.bundle.b85002c352336ab9c482.js
 opt/app/.nuxt/dist/1.nuxt.bundle.89a9958091c34dcc68ed.js
 opt/app/.nuxt/dist/index.html
-opt/app/.nuxt/dist/manifest.85bd29e3c71de9bcc2d9.js
-opt/app/.nuxt/dist/nuxt.bundle.feb4645ff776dbf7a7e3.js
+opt/app/.nuxt/dist/manifest.2c18c094f1227370e2d4.js
+opt/app/.nuxt/dist/nuxt.bundle.2bfb4db1ae8757116e04.js
 opt/app/.nuxt/dist/server-bundle.json
-opt/app/.nuxt/dist/vendor.bundle.85bd29e3c71de9bcc2d9.js
+opt/app/.nuxt/dist/vendor.bundle.2c18c094f1227370e2d4.js
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/hugo-version
@@ -4307,8 +4307,6 @@ usr/lib/node_modules/npm/node_modules/proto-list/package.json
 usr/lib/node_modules/npm/node_modules/proto-list/proto-list.js
 usr/lib/node_modules/npm/node_modules/rc/index.js
 usr/lib/node_modules/npm/node_modules/rc/lib/utils.js
-usr/lib/node_modules/npm/node_modules/rc/node_modules/minimist/index.js
-usr/lib/node_modules/npm/node_modules/rc/node_modules/minimist/package.json
 usr/lib/node_modules/npm/node_modules/rc/package.json
 usr/lib/node_modules/npm/node_modules/read-cmd-shim/index.js
 usr/lib/node_modules/npm/node_modules/read-cmd-shim/package.json
