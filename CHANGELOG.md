@@ -1,3 +1,7 @@
+## 0.79.1 (2020-12-22)
+
+* Upgrade Hugo to 0.79.1 to deal with security issue
+
 ## 0.74.3 (2020-07-28)
 
 * Upgrade Hugo to 0.74.3
