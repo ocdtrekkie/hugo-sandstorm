@@ -18,13 +18,13 @@ lib64
 opt/app
 opt/app/.babelrc
 opt/app/.cloudcmd.menu.js
-opt/app/.nuxt/dist/0.nuxt.bundle.9161410ae22bf1eded53.js
+opt/app/.nuxt/dist/0.nuxt.bundle.47b21c7660f061fa62c7.js
 opt/app/.nuxt/dist/1.nuxt.bundle.89a9958091c34dcc68ed.js
 opt/app/.nuxt/dist/index.html
-opt/app/.nuxt/dist/manifest.b85e173a8a343ffc2cd6.js
-opt/app/.nuxt/dist/nuxt.bundle.0a58434b4acdaad4b0d7.js
+opt/app/.nuxt/dist/manifest.ce03c54105ef38282e06.js
+opt/app/.nuxt/dist/nuxt.bundle.72f3ab16750ef4db3d3c.js
 opt/app/.nuxt/dist/server-bundle.json
-opt/app/.nuxt/dist/vendor.bundle.b85e173a8a343ffc2cd6.js
+opt/app/.nuxt/dist/vendor.bundle.ce03c54105ef38282e06.js
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/hugo-version
