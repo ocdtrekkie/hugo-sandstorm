@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ ! -f ../hugo-sandstorm-$(cat hugo-version).spk ]; then
+  echo "You need to bin/pack_hugo first!"
+  exit 1
+fi
+
+vagrant-spk vm up
+vagrant-spk publish ../hugo-sandstorm-$(cat hugo-version).spk
+vagrant-spk vm halt

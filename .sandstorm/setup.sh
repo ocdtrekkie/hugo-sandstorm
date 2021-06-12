@@ -43,6 +43,6 @@ apt-get install -y python-pip asciidoctor
 pip install pygments
 
 cd /tmp
-wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb -O hugo.deb
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb -O hugo.deb
 dpkg -i hugo.deb
 rm hugo.deb

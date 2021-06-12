@@ -9,7 +9,6 @@ etc/group
 etc/inputrc
 etc/ld.so.cache
 etc/localtime
-etc/mailname
 etc/mime.types
 etc/python2.7/sitecustomize.py
 etc/ssl/openssl.cnf
@@ -18,13 +17,13 @@ lib64
 opt/app
 opt/app/.babelrc
 opt/app/.cloudcmd.menu.js
-opt/app/.nuxt/dist/0.nuxt.bundle.47b21c7660f061fa62c7.js
+opt/app/.nuxt/dist/0.nuxt.bundle.ff5d3c72edc61cda7156.js
 opt/app/.nuxt/dist/1.nuxt.bundle.89a9958091c34dcc68ed.js
 opt/app/.nuxt/dist/index.html
-opt/app/.nuxt/dist/manifest.ce03c54105ef38282e06.js
-opt/app/.nuxt/dist/nuxt.bundle.72f3ab16750ef4db3d3c.js
+opt/app/.nuxt/dist/manifest.e172cc78b348e5bde134.js
+opt/app/.nuxt/dist/nuxt.bundle.fc2156ddead258940f90.js
 opt/app/.nuxt/dist/server-bundle.json
-opt/app/.nuxt/dist/vendor.bundle.ce03c54105ef38282e06.js
+opt/app/.nuxt/dist/vendor.bundle.e172cc78b348e5bde134.js
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/hugo-version
@@ -1898,10 +1897,14 @@ opt/app/node_modules/edward/modules/ace-builds/src-min/ace.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/ext-language_tools.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/ext-modelist.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/ext-searchbox.js
+opt/app/node_modules/edward/modules/ace-builds/src-min/mode-html.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/mode-javascript.js
+opt/app/node_modules/edward/modules/ace-builds/src-min/mode-json.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/mode-markdown.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/mode-toml.js
 opt/app/node_modules/edward/modules/ace-builds/src-min/theme-tomorrow_night_blue.js
+opt/app/node_modules/edward/modules/ace-builds/src-min/worker-html.js
+opt/app/node_modules/edward/modules/ace-builds/src-min/worker-json.js
 opt/app/node_modules/edward/package.json
 opt/app/node_modules/edward/server/edit.js
 opt/app/node_modules/edward/server/index.js
@@ -4160,6 +4163,8 @@ usr/lib/node_modules/npm/node_modules/meant/index.js
 usr/lib/node_modules/npm/node_modules/meant/package.json
 usr/lib/node_modules/npm/node_modules/minimatch/minimatch.js
 usr/lib/node_modules/npm/node_modules/minimatch/package.json
+usr/lib/node_modules/npm/node_modules/minimist/index.js
+usr/lib/node_modules/npm/node_modules/minimist/package.json
 usr/lib/node_modules/npm/node_modules/mkdirp/index.js
 usr/lib/node_modules/npm/node_modules/mkdirp/package.json
 usr/lib/node_modules/npm/node_modules/node-fetch-npm/package.json
@@ -4575,6 +4580,7 @@ usr/lib/x86_64-linux-gnu/libnsl-2.28.so
 usr/lib/x86_64-linux-gnu/libnsl.so.1
 usr/lib/x86_64-linux-gnu/libnss_compat-2.28.so
 usr/lib/x86_64-linux-gnu/libnss_compat.so.2
+usr/lib/x86_64-linux-gnu/libnss_dns-2.28.so
 usr/lib/x86_64-linux-gnu/libnss_dns.so.2
 usr/lib/x86_64-linux-gnu/libnss_files-2.28.so
 usr/lib/x86_64-linux-gnu/libnss_files.so.2
@@ -4590,6 +4596,7 @@ usr/lib/x86_64-linux-gnu/libpthread-2.28.so
 usr/lib/x86_64-linux-gnu/libpthread.so.0
 usr/lib/x86_64-linux-gnu/libreadline.so.7
 usr/lib/x86_64-linux-gnu/libreadline.so.7.0
+usr/lib/x86_64-linux-gnu/libresolv-2.28.so
 usr/lib/x86_64-linux-gnu/libresolv.so.2
 usr/lib/x86_64-linux-gnu/librt-2.28.so
 usr/lib/x86_64-linux-gnu/librt.so.1

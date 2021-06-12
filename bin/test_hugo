@@ -9,4 +9,4 @@ vagrant-spk dev
 
 echo "If everything went well:"
 echo
-echo "vagrant-spk pack ../hugo-sandstorm.spk"
+echo "bin/pack_hugo"

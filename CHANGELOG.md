@@ -1,3 +1,8 @@
+## 0.83.1 (2021-06-12)
+
+* Upgrade Hugo to 0.83.1 extended
+* More automation around packing/publish Hugo spk
+
 ## 0.79.1 (2020-12-22)
 
 * Upgrade Hugo to 0.79.1 to deal with security issue

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hugo-sandstorm version {{hugoVersion}}</h1>
+    <h1>hugo-sandstorm version {{hugoVersion}} extended</h1>
     <template v-if="isLoading">
       <p>
         Loading public site information. This may take a while!

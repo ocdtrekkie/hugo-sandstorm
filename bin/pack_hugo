@@ -1,0 +1,5 @@
+#!/bin/sh
+
+vagrant-spk vm up
+vagrant-spk pack ../hugo-sandstorm-$(cat hugo-version).spk
+vagrant-spk vm halt

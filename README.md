@@ -25,6 +25,7 @@ git clone https://github.com/sandstorm-io/vagrant-spk
 git clone https://github.com/johnbintz/hugo-sandstorm
 export PATH=$(pwd)/vagrant-spk:$PATH
 cd hugo-sandstorm
+bin/test_hugo
 vagrant-spk vm up
 vagrant-spk dev
 ```
@@ -40,3 +41,10 @@ store you would need either the original app key or
 * You'll need Ruby 2.6 and `gem install httparty`.
 * Run `bin/upgrade_hugo <new version>`.
 * Follow the directions.
+
+## Pack and publish
+
+* Run `bin/pack_hugo` to create an spk in the parent directory to ths one
+* Try loading that spk into a separate Sandstorm instance for testing
+* If it works, run `bin/publish_hugo` to publish that version to the App Market
+
