@@ -26,11 +26,8 @@ git clone https://github.com/johnbintz/hugo-sandstorm
 export PATH=$(pwd)/vagrant-spk:$PATH
 cd hugo-sandstorm
 bin/test_hugo
-vagrant-spk vm up
-vagrant-spk dev
 ```
-
-Visit [http://local.sandstorm.io:6080/](http://local.sandstorm.io:6080/) in a web browser.
+Visit [http://local.sandstorm.io:6090/](http://local.sandstorm.io:6090/) in a web browser.
 
 Note: when you want to fork this repo and create actual app packages for the app
 store you would need either the original app key or
