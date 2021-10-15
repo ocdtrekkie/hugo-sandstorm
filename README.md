@@ -41,6 +41,7 @@ store you would need either the original app key or
 
 ## Pack and publish
 
+* Run `bin/update_changelogs` to update changelogs for the package
 * Run `bin/pack_hugo` to create an spk in the parent directory to ths one
 * Try loading that spk into a separate Sandstorm instance for testing
 * If it works, run `bin/publish_hugo` to publish that version to the App Market

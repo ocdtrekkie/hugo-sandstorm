@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+SANDSTORM_CHANGELOG = ".sandstorm/changelog.md"
+CHANGELOG = "CHANGELOG.md"
+
+SANDSTORM_VERSION_FILE = ".sandstorm/app-marketing-version"
+HUGO_VERSION_FILE = "hugo-version"
+
+HUGO_VERSION = File.read(HUGO_VERSION_FILE).chomp
+
+[
+  [SANDSTORM_CHANGELOG, SANDSTORM_VERSION_FILE],
+  [CHANGELOG, HUGO_VERSION_FILE]
+].each do |(changelog, version_file)|
+  data = File.readlines(changelog).map(&:chomp)
+  version = File.read(version_file).chomp
+
+  unless data.any? { |line| line[version] }
+    data = [
+      "## #{version}",
+      "",
+      "* Upgrade Hugo to #{HUGO_VERSION} extended",
+      ""
+    ].concat(data)
+
+    File.open(changelog, 'w') { |fh| fh.print data.join("\n") + "\n" }
+  end
+end

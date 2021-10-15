@@ -1,3 +1,7 @@
+## 0.88.1~2021-10-10
+
+* Upgrade Hugo to 0.88.1 extended
+
 ## 0.79.1~2020-12-22
 
 * Upgrade Hugo to 0.79.1 to deal with security issue
