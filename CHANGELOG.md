@@ -1,3 +1,7 @@
+## 0.89.4
+
+* Upgrade Hugo to 0.89.4 extended
+
 ## 0.88.1 (2021-10-12)
 
 * Upgrade Hugo to 0.88.1 extended
