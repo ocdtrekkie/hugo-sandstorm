@@ -1,3 +1,7 @@
+## 0.90.1~2021-12-10
+
+* Upgrade Hugo to 0.90.1 extended
+
 ## 0.90.0~2021-12-08
 
 * Upgrade Hugo to 0.90.0 extended
