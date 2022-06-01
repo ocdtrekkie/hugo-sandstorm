@@ -4,10 +4,9 @@ require 'httparty'
 require 'time'
 
 version = ARGV[0]
-also_pack = ARGV[1]
 
 unless version
-  puts "Usage: #{$0} <version> --also-pack"
+  puts "Usage: #{$0} <version>"
 
   exit 1
 end
@@ -40,24 +39,12 @@ end
 
 File.open('.sandstorm/sandstorm-pkgdef.capnp', 'w') { |fh| fh.print lines.join }
 
-if also_pack == '--also-pack'
-  system 'bin/test_hugo --build-only'
-  system 'bin/pack_hugo'
+puts <<~TXT
 
-  puts <<~TXT
+  Now do this:
 
-    Now do this:
-
-    * Test fresh and upgrade install
-  TXT
-else
-  puts <<~TXT
-
-    Now do this:
-
-    * bin/test_hugo
-    * Test fresh install
-    * bin/pack_hugo
-    * Test upgrade install
-  TXT
-end
+  * bin/test_hugo
+  * Test fresh install
+  * bin/pack_hugo
+  * Test upgrade install
+TXT
