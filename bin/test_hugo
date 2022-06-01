@@ -1,5 +1,7 @@
 #!/bin/bash
 
+build_only=$1
+
 cd .sandstorm
 vagrant destroy -f
 cd ..
@@ -11,8 +13,16 @@ vagrant-spk vm up
 vagrant-spk vm halt
 vagrant-spk vm up
 
-xdg-open http://local.sandstorm.io:6090/
-vagrant-spk dev
+if [[ $build_only == "--build-only" ]]; then
+  echo "Building for packing only, no web browser will open!"
+  vagrant-spk dev & pid=$!
+  # 5 minutes should be enough time...
+  sleep 600
+  kill -INT $pid
+else
+  xdg-open http://local.sandstorm.io:6090/
+  vagrant-spk dev
+fi
 
 echo "If everything went well:"
 echo
