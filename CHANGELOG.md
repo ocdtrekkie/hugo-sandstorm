@@ -1,3 +1,7 @@
+## 0.100.2
+
+* Upgrade Hugo to 0.100.2 extended
+
 ## 0.99.1
 
 * Upgrade Hugo to 0.99.1 extended

@@ -1,3 +1,7 @@
+## 0.100.2~2022-06-12
+
+* Upgrade Hugo to 0.100.2 extended
+
 ## 0.99.1~2022-05-25
 
 * Upgrade Hugo to 0.99.1 extended
