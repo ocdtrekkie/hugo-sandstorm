@@ -11,7 +11,7 @@ unless version
   exit 1
 end
 
-verify_url = "https://github.com/gohugoio/hugo/releases/download/v#{version}/hugo_extended_#{version}_Linux-64bit.deb"
+verify_url = "https://github.com/gohugoio/hugo/releases/download/v#{version}/hugo_extended_#{version}_linux-amd64.deb"
 
 response = HTTParty.get(verify_url)
 
